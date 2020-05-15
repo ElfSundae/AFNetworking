@@ -230,9 +230,9 @@ static void *AFHTTPRequestSerializerObserverContext = &AFHTTPRequestSerializerOb
 #endif
     if (userAgent) {
         if (![userAgent canBeConvertedToEncoding:NSASCIIStringEncoding]) {
-            NSMutableString *mutableUserAgent = [userAgent mutableCopy];
-            if (CFStringTransform((__bridge CFMutableStringRef)(mutableUserAgent), NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false)) {
-                userAgent = mutableUserAgent;
+            NSString *transformedUserAgent = [userAgent stringByApplyingTransform:@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove" reverse:NO];
+            if (transformedUserAgent) {
+                userAgent = transformedUserAgent;
             }
         }
         [self setValue:userAgent forHTTPHeaderField:@"User-Agent"];
