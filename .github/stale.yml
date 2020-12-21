@@ -7,10 +7,11 @@ daysUntilStale: 14
 daysUntilClose: 7
 
 # Issues or Pull Requests with these labels will never be considered stale
-exemptLabels:
-  - "support"
-  - "bug"
-  - "security"
+ exemptLabels:		
+   - "support"		
+   - "bug"		
+   - "security"
+   - "needs investigation"
 
 # Label to use when marking as stale
 staleLabel: stale
